@@ -56,6 +56,22 @@ protocol Coordinator: View {
     associatedtype Link: CoordinationLink
     var coordinationLink: Link? { get }
 }
+
+// MARK: - Application Coordinator
+
+enum ApplicationCoordinationLink: Int, CoordinationLink {
+    case firstView
+}
+
+struct ApplicationCoordinator: Coordinator {
+    @State var coordinationLink: ApplicationCoordinationLink? = .firstView
+    
+    var body: some View {
+        NavigationView {
+            FirstViewCoordinator()
+        }
+    }
+}
     
 // MARK: - FirstView Coordinator
     
@@ -67,12 +83,10 @@ struct FirstViewCoordinator: Coordinator {
     @State var coordinationLink: FirstViewCoordinationLink? = nil
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                FirstView(coordinationLink: $coordinationLink)
-                NavigationLink(destination: SecondViewCoordinator(), tag: .secondView, selection: $coordinationLink) {
-                    EmptyView()
-                }
+        ZStack {
+            FirstView(coordinationLink: $coordinationLink)
+            NavigationLink(destination: SecondViewCoordinator(), tag: .secondView, selection: $coordinationLink) {
+                EmptyView()
             }
         }
     }
@@ -88,12 +102,10 @@ struct SecondViewCoordinator: Coordinator {
     @State var coordinationLink: SecondViewCoordinationLink? = nil
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                SecondView(coordinationLink: $coordinationLink)
-                NavigationLink(destination: ThirdViewCoordinator(), tag: .thirdView, selection: $coordinationLink) {
-                    EmptyView()
-                }
+        ZStack {
+            SecondView(coordinationLink: $coordinationLink)
+            NavigationLink(destination: ThirdViewCoordinator(), tag: .thirdView, selection: $coordinationLink) {
+                EmptyView()
             }
         }
     }
@@ -109,12 +121,10 @@ struct ThirdViewCoordinator: Coordinator {
     @State var coordinationLink: ThirdViewCoordinationLink? = nil
     
     var body: some View {
-        NavigationView {
-            ThirdView(coordinationLink: $coordinationLink)
-        }
+        ThirdView(coordinationLink: $coordinationLink)
     }
 }
 
 // MARK: - Preview
 
-PlaygroundPage.current.setLiveView(FirstViewCoordinator())
+PlaygroundPage.current.setLiveView(ApplicationCoordinator())
