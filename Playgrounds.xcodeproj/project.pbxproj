@@ -19,6 +19,7 @@
 		9A58EDD723B552DB00652B0F /* Playgrounds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Playgrounds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A58EDDA23B552DC00652B0F /* Playgrounds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playgrounds.h; sourceTree = "<group>"; };
 		9A58EDDB23B552DC00652B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A8766F523B94702005BE02D /* SwiftUI+Coordinator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "SwiftUI+Coordinator.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				9A558D3823B93495003B6538 /* Swinject+UnitTests_DependencyOverride.playground */,
+				9A8766F523B94702005BE02D /* SwiftUI+Coordinator.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
@@ -327,7 +329,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Playgrounds/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -353,7 +355,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Playgrounds/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
