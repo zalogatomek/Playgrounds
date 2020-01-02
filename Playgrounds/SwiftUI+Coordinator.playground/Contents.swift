@@ -4,7 +4,7 @@ import SwiftUI
 // MARK: - Views (Screens)
 
 struct FirstView: View {
-    @Binding var coordinationLink: FirstViewCoordinationLink?
+    @Binding var coordinatorTag: FirstViewCoordinatorTag?
     
     var body: some View {
         ZStack {
@@ -12,7 +12,7 @@ struct FirstView: View {
                 .fill(Color.red)
             
             Button("Go to Second View") {
-                self.coordinationLink = .secondView
+                self.coordinatorTag = .secondView
             }
         }
         .navigationBarTitle("First View")
@@ -20,7 +20,7 @@ struct FirstView: View {
 }
 
 struct SecondView: View {
-    @Binding var coordinationLink: SecondViewCoordinationLink?
+    @Binding var coordinatorTag: SecondViewCoordinatorTag?
     
     var body: some View {
         ZStack {
@@ -28,7 +28,7 @@ struct SecondView: View {
                 .fill(Color.green)
             
             Button("Go to Third View") {
-                self.coordinationLink = .thirdView
+                self.coordinatorTag = .thirdView
             }
         }
         .navigationBarTitle("Second View")
@@ -36,7 +36,7 @@ struct SecondView: View {
 }
 
 struct ThirdView: View {
-    @Binding var coordinationLink: ThirdViewCoordinationLink?
+    @Binding var coordinatorTag: ThirdViewCoordinatorTag?
     
     var body: some View {
         ZStack {
@@ -49,79 +49,102 @@ struct ThirdView: View {
 
 // MARK: - Coordinators
 
-protocol CoordinationLink: Hashable, RawRepresentable {
+protocol CoordinatorTag: Hashable, RawRepresentable {
 }
 
 protocol Coordinator: View {
-    associatedtype Link: CoordinationLink
-    var coordinationLink: Link? { get }
+    associatedtype Tag: CoordinatorTag
+    var coordinatorTag: Tag? { get }
+}
+
+struct CoordinatorLink<Destination, Tag>: View where Destination: View, Tag: CoordinatorTag {
+    private var destination: Destination
+    private var tag: Tag
+    private var selection: Binding<Tag?>
+    
+    init(destination: Destination, tag: Tag, selection: Binding<Tag?>) {
+        self.destination = destination
+        self.tag = tag
+        self.selection = selection
+    }
+    
+    var body: some View {
+        NavigationLink(destination: destination, tag: tag, selection: selection) {
+            EmptyView()
+        }
+    }
 }
 
 // MARK: - Application Coordinator
 
-enum ApplicationCoordinationLink: Int, CoordinationLink {
+enum ApplicationCoordinatorTag: Int, CoordinatorTag {
     case firstView
 }
 
 struct ApplicationCoordinator: Coordinator {
-    @State var coordinationLink: ApplicationCoordinationLink? = .firstView
+    @State var coordinatorTag: ApplicationCoordinatorTag? = .firstView
     
     var body: some View {
         NavigationView {
-            FirstViewCoordinator()
+            currentView
+        }
+    }
+    
+    var currentView: AnyView {
+        switch coordinatorTag {
+        case .firstView:
+            return AnyView(FirstViewCoordinator())
+        case .none:
+            return AnyView(EmptyView())
         }
     }
 }
     
 // MARK: - FirstView Coordinator
     
-enum FirstViewCoordinationLink: Int, CoordinationLink {
+enum FirstViewCoordinatorTag: Int, CoordinatorTag {
     case secondView
 }
 
 struct FirstViewCoordinator: Coordinator {
-    @State var coordinationLink: FirstViewCoordinationLink? = nil
+    @State var coordinatorTag: FirstViewCoordinatorTag? = nil
     
     var body: some View {
         ZStack {
-            FirstView(coordinationLink: $coordinationLink)
-            NavigationLink(destination: SecondViewCoordinator(), tag: .secondView, selection: $coordinationLink) {
-                EmptyView()
-            }
+            FirstView(coordinatorTag: $coordinatorTag)
+            CoordinatorLink(destination: SecondViewCoordinator(), tag: .secondView, selection: $coordinatorTag)
         }
     }
 }
 
 // MARK: - SecondView Coordinator
 
-enum SecondViewCoordinationLink: Int, CoordinationLink {
+enum SecondViewCoordinatorTag: Int, CoordinatorTag {
     case thirdView
 }
 
 struct SecondViewCoordinator: Coordinator {
-    @State var coordinationLink: SecondViewCoordinationLink? = nil
+    @State var coordinatorTag: SecondViewCoordinatorTag? = nil
     
     var body: some View {
         ZStack {
-            SecondView(coordinationLink: $coordinationLink)
-            NavigationLink(destination: ThirdViewCoordinator(), tag: .thirdView, selection: $coordinationLink) {
-                EmptyView()
-            }
+            SecondView(coordinatorTag: $coordinatorTag)
+            CoordinatorLink(destination: ThirdViewCoordinator(), tag: .thirdView, selection: $coordinatorTag)
         }
     }
 }
 
 // MARK: - ThirdView Coordinator
 
-enum ThirdViewCoordinationLink: Int, CoordinationLink {
+enum ThirdViewCoordinatorTag: Int, CoordinatorTag {
     case secondView
 }
 
 struct ThirdViewCoordinator: Coordinator {
-    @State var coordinationLink: ThirdViewCoordinationLink? = nil
+    @State var coordinatorTag: ThirdViewCoordinatorTag? = nil
     
     var body: some View {
-        ThirdView(coordinationLink: $coordinationLink)
+        ThirdView(coordinatorTag: $coordinatorTag)
     }
 }
 
