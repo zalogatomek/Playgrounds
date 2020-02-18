@@ -15,6 +15,7 @@
 		2FF1AFE09D13CE9AFDDD97C4 /* Pods-Playgrounds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playgrounds.release.xcconfig"; path = "Target Support Files/Pods-Playgrounds/Pods-Playgrounds.release.xcconfig"; sourceTree = "<group>"; };
 		467EB2F372BD8A5AD4A8D8AE /* Pods_Playgrounds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playgrounds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ABFE7E86E9D8C0FE86A5EA8 /* Pods-Playgrounds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playgrounds.debug.xcconfig"; path = "Target Support Files/Pods-Playgrounds/Pods-Playgrounds.debug.xcconfig"; sourceTree = "<group>"; };
+		9A459CCB23FC896B000CD9FD /* Rx+DisposeBag.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Rx+DisposeBag.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9A558D3823B93495003B6538 /* Swinject+UnitTests_DependencyOverride.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Swinject+UnitTests_DependencyOverride.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9A58EDD723B552DB00652B0F /* Playgrounds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Playgrounds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A58EDDA23B552DC00652B0F /* Playgrounds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playgrounds.h; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 			children = (
 				9A558D3823B93495003B6538 /* Swinject+UnitTests_DependencyOverride.playground */,
 				9A8766F523B94702005BE02D /* SwiftUI+Coordinator.playground */,
+				9A459CCB23FC896B000CD9FD /* Rx+DisposeBag.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
