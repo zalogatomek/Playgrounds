@@ -3,12 +3,10 @@ import RxSwift
 // Check, if its safe to use disposeBag inside struct
 
 class AClass {
-    let uuid: UUID = UUID()
     let event: PublishSubject<Void> = PublishSubject()
     let disposeBag: DisposeBag = DisposeBag()
     
     init() {
-        let uuid = self.uuid
         event.subscribe(onNext: {
             print("class onNext")
         }, onDisposed: {
