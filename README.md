@@ -5,6 +5,13 @@ Configured as a project to easily use CocoaPods in playgrounds.
 
 
 ### List of playgrounds
+- __ISP-OtherSide__\
+Playgorund demostrating ISP rule from consumer perspective, so injecting only whats needed. 
+[Check also this Medium post](https://zalogatomek.medium.com/interface-segregation-principle-look-from-a-different-side-e61bcedc8d58)
+
+- __ISP-OtherSide-Part2__\
+Second part of ISP rule, showing same problem but with reactive approach.
+
 - __RuntimeWarnings__\
 Trying to achieve runtime warnings in Xcode, working similar to `assertionFailure`, but without breaking app execution. Hacky, but working.
 
