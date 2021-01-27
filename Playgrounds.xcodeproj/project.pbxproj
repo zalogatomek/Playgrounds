@@ -21,7 +21,9 @@
 		9A58EDD723B552DB00652B0F /* Playgrounds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Playgrounds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A58EDDA23B552DC00652B0F /* Playgrounds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playgrounds.h; sourceTree = "<group>"; };
 		9A58EDDB23B552DC00652B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A5B87AD25AA405A0037F16E /* ISP-OtherSide.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "ISP-OtherSide.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9A8766F523B94702005BE02D /* SwiftUI+Coordinator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "SwiftUI+Coordinator.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9AF50B5125C203A2006A21C5 /* ISP-OtherSide-Part2.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "ISP-OtherSide-Part2.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +68,12 @@
 		9A58EDD923B552DC00652B0F /* Playgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				9A558D3823B93495003B6538 /* Swinject+UnitTests_DependencyOverride.playground */,
-				9A8766F523B94702005BE02D /* SwiftUI+Coordinator.playground */,
+				9A5B87AD25AA405A0037F16E /* ISP-OtherSide.playground */,
+				9AF50B5125C203A2006A21C5 /* ISP-OtherSide-Part2.playground */,
 				9A583089242D486700C55856 /* RuntimeWarnings.playground */,
 				9A459CCB23FC896B000CD9FD /* Rx+DisposeBag.playground */,
+				9A8766F523B94702005BE02D /* SwiftUI+Coordinator.playground */,
+				9A558D3823B93495003B6538 /* Swinject+UnitTests_DependencyOverride.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
